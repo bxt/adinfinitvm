@@ -3,6 +3,11 @@ class GridView
     @dom = document.createElement('div')
     @dom.classList.add('grid')
     @dom.addEventListener('click', @clicked)
+    @initializeGrid()
+    document.addEventListener('keydown', @keydown)
+
+  initializeGrid: () ->
+    @dom.innerHTML = ''
     for y in [0...@grid.h]
       row = document.createElement('div')
       row.classList.add('grid-row')
@@ -10,10 +15,14 @@ class GridView
         squareView = new SquareView(@grid.getAt(x, y))
         squareView.addTo(row)
       @dom.appendChild(row)
-    document.addEventListener('keydown', @keydown)
+    return
+
+  onDone: (callback) ->
+    @doneHandler = callback
+    this
 
   clicked: () =>
-    console.log("done?", @grid.checkAll())
+    @doneHandler?() if @grid.checkAll()
 
   keydown: (event) =>
     (try switch event.keyCode
@@ -39,3 +48,6 @@ class GridView
 
   addTo: (parent) ->
     parent.appendChild(@dom)
+
+  destroy: () ->
+    @dom.parentNode.removeChild(@dom);
