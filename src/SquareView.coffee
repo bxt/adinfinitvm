@@ -1,4 +1,6 @@
 class SquareView
+  squareDesigns = new SquareDesigns(40, 6, '#d88')
+
   constructor: (@square) ->
     @dom = document.createElement('a')
     @dom.href = 'javascript:;';
@@ -17,6 +19,6 @@ class SquareView
     @dom.style.transform = 'rotate(0deg)';
 
   refreshDom: () ->
-    new SquareDesign(@square, 32).addTo(@dom)
+    squareDesigns.setSquare(@square).addTo(@dom)
     @dom.className = 'grid-square'
     @dom.classList.add("grid-square-#{@square.id}")
