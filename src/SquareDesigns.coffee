@@ -1,5 +1,5 @@
 class SquareDesigns
-  constructor: (@size, @width, @color) ->
+  constructor: (@size, @width) ->
     @halfSize = @size/2
     @circleRadius = @size*7/32
     @loadDesigns()
@@ -39,6 +39,8 @@ class SquareDesigns
   load1Designs: () ->
     for i in [1,2,4,8]
       @designs[i] = @layout """
+      <path d="#{@paths[i]}" #{@styleWhite()} />
+      <circle cx="#{@halfSize}" cy="#{@halfSize}" r="#{@circleRadius}" #{@styleWhite()} />
       <path d="#{@paths[i]}" #{@style()} />
       <circle cx="#{@halfSize}" cy="#{@halfSize}" r="#{@circleRadius}" #{@style()} />
       """
@@ -46,6 +48,7 @@ class SquareDesigns
   load2Designs: () ->
     for i in [5,10,3,6,9,12]
       @designs[i] = @layout """
+      <path d="#{@paths[i]}" #{@styleWhite()} />
       <path d="#{@paths[i]}" #{@style()} />
       """
 
@@ -73,9 +76,9 @@ class SquareDesigns
     """
 
   style: (plus) -> """
-    style="fill: none; stroke: #{@color}; stroke-width: #{@width}px; #{plus}"
+    class="foreground" style="fill: none; stroke-width: #{@width}px; #{plus}"
   """
 
   styleWhite: (plus) -> """
-    style="fill: none; stroke: #fff; stroke-width: #{@width*8/6}px; #{plus}"
+    class="background" style="fill: none; stroke-width: #{@width*8/6}px; #{plus}"
   """

@@ -1,5 +1,5 @@
 class SquareView
-  squareDesigns = new SquareDesigns(40, 6, '#d88')
+  squareDesigns = new SquareDesigns(40, 6)
 
   constructor: (@square) ->
     @dom = document.createElement('a')
