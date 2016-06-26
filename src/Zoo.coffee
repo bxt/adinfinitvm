@@ -1,28 +1,43 @@
 class Zoo
-	constructor: () ->
-		@dom = document.createElement('div')
-		@dom.classList.add('zoo')
-		@levels = new Levels(13, 9)
-		@level = 0
-		@loadLevel()
+  doneClass = 'done'
 
-	done: () =>
-		@destroyLevel()
-		@level = @level + 1
-		@loadLevel()
+  constructor: () ->
+    @dom = document.createElement('div')
+    @dom.classList.add('zoo')
+    document.body.addEventListener('click', @clicked)
+    @levels = new Levels(13, 9)
+    @level = 8
+    @loadLevel()
 
-	destroyLevel: () =>
-		@gridView.destroy()
-		@gridView = null
+  clicked: () =>
+    if @gridView.isDone()
+      cL = document.body.classList
+      if cL.contains(doneClass)
+        cL.remove('done')
+        @level = @level + 1
+        @loadLevel()
+      else
+        cL.add('done')
+        @displayLevel()
 
-	loadLevel: () =>
-		grid = @levels.get(@level)
-		@gridView = new GridView(grid)
-		@gridView.onDone(@done)
-		@gridView.addTo(@dom)
+  loadLevel: () =>
+    @gridView?.destroy()
+    grid = @levels.get(@level)
+    @gridView = new GridView(grid, true)
+    @gridView.addTo(@dom)
 
-	addTo: (parent) ->
-		parent.appendChild(@dom)
+  displayLevel: () =>
+    grid = @gridView.grid
+    @gridView.destroy()
+    @gridView = new GridView(grid, false)
+    @gridView.addTo(@dom)
+
+  next: () =>
+    document.body.classList
+    document.body.removeEventListener('click', @next)
+
+  addTo: (parent) ->
+    parent.appendChild(@dom)
 
 
 zoo = new Zoo()

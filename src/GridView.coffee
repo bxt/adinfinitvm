@@ -1,10 +1,9 @@
 class GridView
-  constructor: (@grid) ->
+  constructor: (@grid, @interactive) ->
     @dom = document.createElement('div')
     @dom.classList.add('grid')
-    @dom.addEventListener('click', @clicked)
     @initializeGrid()
-    @dom.addEventListener('keydown', @keydown)
+    @dom.addEventListener('keydown', @keydown) if @interactive
 
   initializeGrid: () ->
     @dom.innerHTML = ''
@@ -12,17 +11,13 @@ class GridView
       row = document.createElement('div')
       row.classList.add('grid-row')
       for x in [0...@grid.w]
-        squareView = new SquareView(@grid.getAt(x, y))
+        squareView = new SquareView(@grid.getAt(x, y), @interactive)
         squareView.addTo(row)
       @dom.appendChild(row)
     return
 
-  onDone: (callback) ->
-    @doneHandler = callback
-    this
-
-  clicked: () =>
-    @doneHandler?() if @grid.checkAll()
+  isDone: () =>
+    @grid.checkAll()
 
   keydown: (event) =>
     (try switch event.keyCode

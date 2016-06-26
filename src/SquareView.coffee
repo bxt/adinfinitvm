@@ -1,10 +1,10 @@
 class SquareView
   squareDesigns = new SquareDesigns(40, 6)
 
-  constructor: (@square) ->
+  constructor: (@square, @interactive) ->
     @dom = document.createElement('a')
     @dom.href = 'javascript:;';
-    @dom.addEventListener('click', @clicked)
+    @dom.addEventListener('click', @clicked) if @interactive
     @refreshDom()
 
   addTo: (parent) ->
