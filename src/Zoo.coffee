@@ -1,7 +1,28 @@
 class Zoo
+	rand = (from, to) ->
+		Math.floor(Math.random()*(to-from)+from)
+
 	makeGrid = (w, h, values) ->
 		gridParts = ((new Square(values[x + y * w]) for x in [0...w]) for y in [0...h])
 		myGrid = new Grid(w, h, gridParts)
+
+	generateLevel = () ->
+		w = rand(5,13)
+		h = rand(5,9)
+		grid = makeGrid(w, h, (0 for x in [0...w*h]))
+		for x in [0...w]
+			for y in [0...h]
+				quads = []
+				quads.push(1) unless x == w-1
+				quads.push(2) unless y == h-1
+				for quad in quads
+					if Math.random() > 0.5
+						grid.getAt(x, y).setQuad(quad)
+						grid.getAtToQuad(x, y, quad).setQuad(quad + 2 & 3)
+		for x in [0...w]
+			for y in [0...h]
+				grid.getAt(x, y).rotate(rand(0, 4))
+		grid
 
 	fixedLevels =
 		0: makeGrid(3, 2, [1, 10, 2, 8, 5, 4])
@@ -33,7 +54,8 @@ class Zoo
 		@gridView = null
 
 	loadLevel: () =>
-		@gridView = new GridView(fixedLevels[@level])
+		grid = fixedLevels[@level] or generateLevel()
+		@gridView = new GridView(grid)
 		@gridView.onDone(@done)
 		@gridView.addTo(@dom)
 
