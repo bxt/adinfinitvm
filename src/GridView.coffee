@@ -4,7 +4,7 @@ class GridView
     @dom.classList.add('grid')
     @dom.addEventListener('click', @clicked)
     @initializeGrid()
-    document.addEventListener('keydown', @keydown)
+    @dom.addEventListener('keydown', @keydown)
 
   initializeGrid: () ->
     @dom.innerHTML = ''
