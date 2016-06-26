@@ -1,9 +1,25 @@
 class Levels
-  constructor: () ->
+  constructor: (@maxW, @maxH, @density = 0.5) ->
 
   get: (level) ->
-    fixedLevels[level] or generateLevel()
-		shuffle(grid)
+    grid = fixedLevels[level] or generateLevel()
+    shuffle(grid)
+    grid
+
+	generateLevel: () ->
+		w = rand(5, @maxW)
+		h = rand(5, @maxH)
+		grid = new Grid(w, h, (new Square(0) for x in [0...w*h]))
+		for x in [0...w]
+			for y in [0...h]
+				quads = []
+				quads.push(1) unless x == w-1
+				quads.push(2) unless y == h-1
+				for quad in quads
+					if Math.random() > (1-@density)
+						grid.getAt(x, y).setQuad(quad)
+						grid.getAtToQuad(x, y, quad).setQuad(quad + 2 & 3)
+		grid
 
 	rand = (from, to) ->
 		Math.floor(Math.random()*(to-from)+from)
@@ -16,21 +32,6 @@ class Levels
 		for x in [0...grid.w]
 			for y in [0...grid.h]
 				grid.getAt(x, y).rotate(rand(0, 4))
-		grid
-
-	generateLevel = (density = 0.5) ->
-		w = rand(5,13)
-		h = rand(5,9)
-		grid = new Grid(w, h, (new Square(0) for x in [0...w*h]))
-		for x in [0...w]
-			for y in [0...h]
-				quads = []
-				quads.push(1) unless x == w-1
-				quads.push(2) unless y == h-1
-				for quad in quads
-					if Math.random() > (1-density)
-						grid.getAt(x, y).setQuad(quad)
-						grid.getAtToQuad(x, y, quad).setQuad(quad + 2 & 3)
 		grid
 
 	fixedLevels =

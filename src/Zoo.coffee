@@ -2,7 +2,7 @@ class Zoo
 	constructor: () ->
 		@dom = document.createElement('div')
 		@dom.classList.add('zoo')
-		@levels = new Levels()
+		@levels = new Levels(13, 9)
 		@level = 0
 		@loadLevel()
 
