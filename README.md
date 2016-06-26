@@ -10,4 +10,11 @@ First install coffeebar:
 
 Then run:
 
-    coffeebar -mwo script.min.js src
+    coffeebar -wo script.min.js \
+      src/Square.coffee \
+      src/SquareDesigns.coffee \
+      src/SquareView.coffee \
+      src/Grid.coffee \
+      src/GridView.coffee \
+      src/Levels.coffee \
+      src/Zoo.coffee
