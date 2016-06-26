@@ -2,7 +2,7 @@ class Levels
   constructor: (@maxW, @maxH, @density = 0.5) ->
 
   get: (level) ->
-    grid = fixedLevels[level] or generateLevel()
+    grid = fixedLevels[level] or @generateLevel()
     shuffle(grid)
     grid
 
