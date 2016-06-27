@@ -1,8 +1,7 @@
 AD·INFINITVM·ATQVE·PLVS·VLTRA
 =============================
 
-To infinity and beyond
-----------------------
+*To infinity and beyond*
 
 The game **adinfinitvm** is an easy and never ending puzzle game. You try to
 connect ropes to a loop without end by rotating. An alternate game mode
@@ -39,4 +38,4 @@ Then run:
       src/Header.coffee \
       src/Zoo.coffee
 
-This will continuosly watch the files for changes and recompile.
+This will continuously watch the files for changes and recompile.
