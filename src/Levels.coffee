@@ -71,19 +71,19 @@ class Levels
     2: makeGrid(3, 2, [6, 14, 12, 3, 14, 9]) # heart
     3: makeGrid(4, 2, [9, 12, 6, 12, 3, 9, 3, 6]) # two circes
     4: shuffle makeGrid(3, 2, [1, 10, 2, 8, 5, 4]) # parallel lines
-    5: shuffle makeGrid(3, 3, [ # glider in alternate view
-      0, 0, 4
-      2, 12, 5
-      0, 3, 9
-    ])
-    6: makeGrid(3, 3, [9, 11, 3, 13, 15, 7, 12, 14, 6]) # 4 circles
-    7: shuffle makeGrid(4, 5, [ # phallus
+    5: makeGrid(3, 3, [9, 11, 3, 13, 15, 7, 12, 14, 6]) # 4 circles
+    6: shuffle makeGrid(4, 5, [ # phallus
       0, 6,12, 0
       0, 5, 5, 0
       0, 5, 5, 0
       6,13, 7,12
       3, 9, 3, 9
 
+    ])
+    7: shuffle makeGrid(3, 3, [ # glider in alternate view
+      0, 0, 4
+      2, 12, 5
+      0, 3, 9
     ])
     8: makeGrid(6, 4, [ # wobbely wobbledy
       0,6,6,6,6,0
