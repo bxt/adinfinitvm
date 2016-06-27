@@ -1,12 +1,24 @@
 class Levels
-  constructor: (@maxW, @maxH, @density = 0.5) ->
+  constructor: () ->
 
   get: (level) ->
-    fixedLevels[level] or shuffle(@generateLevel())
+    fixedLevels[level] or shuffle(@generateLevel(level))
 
-  generateLevel: () ->
-    w = rand(5, @maxW)
-    h = rand(5, @maxH)
+  generateLevel: (level) ->
+    random = seedRandom(level+1)
+    if level < 50
+      w = 9
+      h = 8
+    else
+      w = 13
+      h = 9
+    density = 0.5
+    generateLevel(w, h, density, random)
+
+
+  generateLevel = (maxW, maxH, density, random = Math.random) ->
+    w = rand(5, maxW, random)
+    h = rand(5, maxH, random)
     grid = makeGrid(w, h, (0 for x in [0...w*h]))
     for x in [0...w]
       for y in [0...h]
@@ -14,13 +26,19 @@ class Levels
         quads.push(1) unless x == w-1
         quads.push(2) unless y == h-1
         for quad in quads
-          if Math.random() > (1-@density)
+          antiquad = quad + 2 & 3
+          if random() > (1-density)
             grid.getAt(x, y).setQuad(quad)
-            grid.getAtToQuad(x, y, quad).setQuad(quad + 2 & 3)
+            grid.getAtToQuad(x, y, quad).setQuad(antiquad)
     grid
 
-  rand = (from, to) ->
-    Math.floor(Math.random()*(to-from)+from)
+  seedRandom = (seed) ->
+    () ->
+        seed = Math.sin(seed) * 1000000
+        seed - Math.floor(seed);
+
+  rand = (from, to, random = Math.random) ->
+    Math.floor(random()*(to-from)+from)
 
   makeGrid = (w, h, values) ->
     gridParts = ((new Square(values[x + y * w]) for x in [0...w]) for y in [0...h])

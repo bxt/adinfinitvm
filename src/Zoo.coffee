@@ -5,7 +5,7 @@ class Zoo
     @dom = document.createElement('div')
     @dom.classList.add('zoo')
     document.body.addEventListener('click', @clicked)
-    @levels = new Levels(13, 9)
+    @levels = new Levels()
     @level = 0
     @instructions = new Instructions()
     @header = new Header()
