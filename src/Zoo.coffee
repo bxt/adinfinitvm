@@ -53,4 +53,4 @@ class Zoo
 
 zoo = new Zoo()
 zoo.addTo(document.getElementById('jscontainer'))
-console.log zoo
+#console.log zoo
