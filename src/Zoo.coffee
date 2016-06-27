@@ -9,7 +9,17 @@ class Zoo
     @level = 0
     @instructions = new Instructions()
     @header = new Header()
+    @createDesignChanger()
     @loadLevel()
+
+  createDesignChanger: () ->
+    @designChanger = new Button()
+    @designChanger.clicked = (event) =>
+      event.stopPropagation()
+      @gridView.changeSquareDesigns()
+    @designChanger.dom.innerHTML = '♦'
+    @designChanger.dom.className = 'button designChanger'
+    @designChanger.addTo(@dom)
 
   clicked: () =>
     if @gridView.isDone()
@@ -23,18 +33,12 @@ class Zoo
       else
         cL.add('done')
         @instructions.end(@level)
-        @displayLevel()
+        @gridView.freeze()
 
   loadLevel: () =>
     @gridView?.destroy()
     grid = @levels.get(@level)
-    @gridView = new GridView(grid, true)
-    @gridView.addTo(@dom)
-
-  displayLevel: () =>
-    grid = @gridView.grid
-    @gridView.destroy()
-    @gridView = new GridView(grid, false)
+    @gridView = new GridView(grid)
     @gridView.addTo(@dom)
 
   addTo: (parent) ->
