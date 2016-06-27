@@ -1,5 +1,5 @@
 class SquareView
-  squareDesigns = new SquareDesigns(40, 6)
+  squareDesigns = new PathySquareDesigns(40, 6)
 
   constructor: (@square, @interactive) ->
     @dom = document.createElement('a')

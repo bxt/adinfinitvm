@@ -13,6 +13,8 @@ Then run:
     coffeebar -wo script.min.js \
       src/Square.coffee \
       src/SquareDesigns.coffee \
+      src/TriangularSquareDesigns.coffee \
+      src/PathySquareDesigns.coffee \
       src/SquareView.coffee \
       src/Grid.coffee \
       src/GridView.coffee \
