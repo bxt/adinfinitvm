@@ -6,7 +6,7 @@ class Zoo
     @dom.classList.add('zoo')
     document.body.addEventListener('click', @clicked)
     @levels = new Levels()
-    @level = 0
+    @level = localStorage.getItem('adinfinitvm.level')*1
     @instructions = new Instructions()
     @header = new Header()
     @createDesignChanger()
@@ -28,18 +28,24 @@ class Zoo
         cL.remove('done')
         @level = @level + 1
         @loadLevel()
-        @instructions.start(@level)
-        @header.hide() if @level >= 4
       else
         cL.add('done')
-        @instructions.end(@level)
         @gridView.freeze()
+        @instructions.end(@level)
+        @persistLevelProgress()
 
   loadLevel: () =>
     @gridView?.destroy()
     grid = @levels.get(@level)
     @gridView = new GridView(grid)
     @gridView.addTo(@dom)
+    @instructions.start(@level)
+    @header.hide() if @level >= 4
+
+  persistLevelProgress: () ->
+    level = localStorage.getItem('adinfinitvm.level')
+    if @level >= level
+      localStorage.setItem('adinfinitvm.level', @level + 1)
 
   addTo: (parent) ->
     parent.appendChild(@dom)
