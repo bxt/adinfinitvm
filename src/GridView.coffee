@@ -40,10 +40,11 @@ class GridView
   isDone: () =>
     @grid.checkAll()
 
-  keydown: (event) =>
+  keydown: (event) ->
     (try switch event.keyCode
       when 37 # left
-        document.activeElement.previousSibling or document.activeElement.parentNode.previousSibling.lastChild
+        document.activeElement.previousSibling or
+          document.activeElement.parentNode.previousSibling.lastChild
       when 38 # top
         res = document.activeElement.parentNode.previousSibling.firstChild
         pos = document.activeElement.previousSibling
@@ -52,7 +53,8 @@ class GridView
           res = res.nextSibling
         res
       when 39 # right
-        document.activeElement.nextSibling or document.activeElement.parentNode.nextSibling.firstChild
+        document.activeElement.nextSibling or
+          document.activeElement.parentNode.nextSibling.firstChild
       when 40 # bottom
         res = document.activeElement.parentNode.nextSibling.firstChild
         pos = document.activeElement.previousSibling
@@ -66,4 +68,4 @@ class GridView
     parent.appendChild(@dom)
 
   destroy: () ->
-    @dom.parentNode.removeChild(@dom);
+    @dom.parentNode.removeChild(@dom)

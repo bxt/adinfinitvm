@@ -42,10 +42,19 @@ class PathySquareDesigns extends SquareDesigns
 
   load3Designs: () ->
     for i in [7,11,13,14]
-      @designs[i] = @layout ("<path d=\"#{@paths[k]}\" #{@styleWhite()} /><path d=\"#{@paths[k]}\" #{@style()} />" for k in [3,6,9,12] when not (i & k ^ k)).join('')
+      paths = for k in [3,6,9,12] when not (i & k ^ k)
+        """
+        <path d="#{@paths[k]}" #{@styleWhite()} />
+        <path d="#{@paths[k]}" #{@style()} />
+        """
+      @designs[i] = @layout(paths.join(''))
 
   load4Designs: () ->
-    paths = ("<path d=\"#{@paths[k]}\" #{@styleWhite()} /><path d=\"#{@paths[k]}\" #{@style()} />" for k in [3,6,12,9])
+    paths = for k in [3,6,12,9]
+      """
+      <path d="#{@paths[k]}" #{@styleWhite()} />
+      <path d="#{@paths[k]}" #{@style()} />
+      """
     strokeLength = @halfSize*Math.PI/4
     additionalPath = """
       <path d="#{@paths[3]}" #{@styleWhite("stroke-dasharray: #{strokeLength-1}px, #{strokeLength+1}px;")}/>

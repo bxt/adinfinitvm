@@ -14,10 +14,10 @@ class SquareView extends Button
     unless @frozen
       @square.rotate(1)
       @refreshDom()
-      @dom.style.transform = 'rotate(-90deg)';
+      @dom.style.transform = 'rotate(-90deg)'
       @dom.offsetHeight # trigger reflow
       @dom.classList.add('transitioning')
-      @dom.style.transform = 'rotate(0deg)';
+      @dom.style.transform = 'rotate(0deg)'
 
   refreshDom: () ->
     @squareDesigns.setSquare(@square).addTo(@dom)

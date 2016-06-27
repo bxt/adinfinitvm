@@ -35,6 +35,15 @@ class Instructions
         withDashes "#1337 — 11100010 10011101 10100100"
       else
         if "#{level}".match(/^[15]0+$/)
-          withDashes "congratulations! you reached ##{level}. <a class=\"button\" href=\"http://twitter.com/home?status=#{encodeURIComponent("I just made it to level #{level} in @amoebe's #adinfinitvm game!")}\">tweet</a>"
+          @tweetMessage(level)
         else
           withDashes "##{level}"
+
+  tweetMessage: (level) ->
+    tweet = "I just made it to level #{level} in @amoebe's #adinfinitvm game!
+             https://bxt.github.io/adinfinitvm/"
+    link = "http://twitter.com/home?status=#{encodeURIComponent(tweet)}"
+    withDashes """
+      congratulations! you have completed ##{level}.
+      <a class="button" href="#{link}" target="_blank">tweet</a>
+    """
