@@ -1,7 +1,8 @@
 class Instructions
   withDashes = (string) -> "— #{string} —"
 
-  constructor: (@dom) ->
+  constructor: () ->
+    @dom = document.getElementById('instructions')
 
   start: (level) ->
     @setMessage(@startMessage(level))
@@ -17,6 +18,8 @@ class Instructions
       when 0 then null
       when 1
         withDashes "okay, have fun"
+      when 4
+        "(you still know the game is called AD·INFINITVM·ATQVE·PLVS·VLTRA, right?)"
       else
         "&nbsp;"
 

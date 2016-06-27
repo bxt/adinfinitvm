@@ -7,7 +7,8 @@ class Zoo
     document.body.addEventListener('click', @clicked)
     @levels = new Levels(13, 9)
     @level = 0
-    @instructions = new Instructions(document.getElementById('instructions'))
+    @instructions = new Instructions()
+    @header = new Header()
     @loadLevel()
 
   clicked: () =>
@@ -18,6 +19,7 @@ class Zoo
         @level = @level + 1
         @loadLevel()
         @instructions.start(@level)
+        @header.hide() if @level >= 4
       else
         cL.add('done')
         @instructions.end(@level)
