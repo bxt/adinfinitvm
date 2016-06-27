@@ -20,6 +20,8 @@ class Instructions
         withDashes "okay, have fun"
       when 4
         "(you still know the game is called AD·INFINITVM·ATQVE·PLVS·VLTRA, right?)"
+      when 7
+        "(hint: there's an alternate mode, hit the ♦ in the bottom right corner)"
       else
         "&nbsp;"
 
