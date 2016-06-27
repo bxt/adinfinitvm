@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>AD·INFINITVM·ATQVE·PLVS·VLTRA</title>
-<style>
-@font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 300; src: local('Work Sans Light'), local('WorkSans-Light'), url(WorkSans-Light.woff2) format('woff2'); }
-@font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 200; src: local('Work Sans ExtraLight'), local('WorkSans-ExtraLight'), url(WorkSans-ExtraLight.woff2) format('woff2'); }
-* {padding:0;margin:0;}
-body {padding:20px;font-size:16px;font-family: 'Work Sans', sans-serif; font-weight: 300; text-align: center; background: #eee; color: #333; transition-property: background-color, color; transition-duration: .15s; transition-timing-function: ease-out;}
-body.done {background: #333; color: #eee;}
-p, h1, h2 { margin: 0.4em 0;line-height:120%;}
-h1 {font-weight: 200; font-size:2em;}
-h2 {font-weight: 200; font-size:4em; word-wrap: break-word; transition: height .5s; overflow-y: hidden; }
-footer {color: #999; font-size:0.8em; position: absolute; left: 0; right: 0; bottom: 0; opacity: 0.4; margin-bottom: 3em; }
-.done footer {-webkit-filter: invert(); filter: invert();}
-.grid { margin: 5em 0 0.4em 0; }
-.grid-square { display: inline-block; }
-.grid-square svg { vertical-align: bottom; }
-.grid-square.transitioning { transition: transform .15s; }
-.foreground { stroke: #333; }
-.background { stroke: #eee; }
-.filled { fill: #333; transition: fill .15s; }
-.done .filled { fill: #eee; }
-a.button { border: 1px #333 solid; color: #333; border-radius: 4px; text-decoration: none; padding: 5px; margin: 3px; }
-.done a.button { border-color: #eee; color: #eee; }
-.designChanger {position: absolute; bottom: 41px; right: 41px; opacity: 0.1; transition: opacity 0.5s; }
-.designChanger:hover {opacity: 1;}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>AD·INFINITVM·ATQVE·PLVS·VLTRA</title>
+  <style>
+    @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 300; src: local('Work Sans Light'), local('WorkSans-Light'), url(WorkSans-Light.woff2) format('woff2'); }
+    @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 200; src: local('Work Sans ExtraLight'), local('WorkSans-ExtraLight'), url(WorkSans-ExtraLight.woff2) format('woff2'); }
+
+    * {padding:0;margin:0;}
+    body {padding:20px;font-size:16px;font-family: 'Work Sans', sans-serif; font-weight: 300; text-align: center; background: #eee; color: #333; transition-property: background-color, color; transition-duration: .15s; transition-timing-function: ease-out;}
+    body.done {background: #333; color: #eee;}
+    p, h1, h2 { margin: 0.4em 0;line-height:120%;}
+    h1 {font-weight: 200; font-size:2em;}
+    h2 {font-weight: 200; font-size:4em; word-wrap: break-word; transition: height .5s; overflow-y: hidden; }
+    footer {color: #999; font-size:0.8em; position: absolute; left: 0; right: 0; bottom: 0; opacity: 0.4; margin-bottom: 3em; }
+    .done footer {-webkit-filter: invert(); filter: invert();}
+
+    .grid { margin: 5em 0 0.4em 0; }
+    .grid-square { display: inline-block; }
+    .grid-square svg { vertical-align: bottom; }
+    .grid-square.transitioning { transition: transform .15s; }
+
+    .foreground { stroke: #333; }
+    .background { stroke: #eee; }
+    .filled { fill: #333; transition: fill .15s; }
+    .done .filled { fill: #eee; }
+
+    a.button { border: 1px #333 solid; color: #333; border-radius: 4px; text-decoration: none; padding: 5px; margin: 3px; }
+    .done a.button { border-color: #eee; color: #eee; }
+    
+    .designChanger {position: absolute; bottom: 41px; right: 41px; opacity: 0.1; transition: opacity 0.5s; }
+    .designChanger:hover {opacity: 1;}
+  </style>
 </head>
 <body>
-<h1>∞</h1>
-<h2>AD·INFINITVM·ATQVE·PLVS·VLTRA</h2>
-<p id="instructions">— click to rotate and create perfect loops —</p>
-<footer><p>&copy; 2016 by <a href="http://bernhardhaeussner.de/">Bernhard Häussner</a>, based on the game <a href="http://loopgame.co/">∞ loop for Android and iOS</a>. </p></footer>
-<div id="jscontainer"></div>
-<script src="script.min.js"></script>
+  <h1>∞</h1>
+  <h2>AD·INFINITVM·ATQVE·PLVS·VLTRA</h2>
+  <p id="instructions">— click to rotate and create perfect loops —</p>
+
+  <footer><p>&copy; 2016 by <a href="http://bernhardhaeussner.de/">Bernhard Häussner</a>, based on the game <a href="http://loopgame.co/">∞ loop for Android and iOS</a>. </p></footer>
+
+  <div id="jscontainer"></div>
+  <script src="script.min.js"></script>
 </body>
 </html>
