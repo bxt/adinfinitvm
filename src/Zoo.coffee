@@ -6,7 +6,8 @@ class Zoo
     @dom.classList.add('zoo')
     document.body.addEventListener('click', @clicked)
     @levels = new Levels(13, 9)
-    @level = 8
+    @level = 0
+    @instructions = new Instructions(document.getElementById('instructions'))
     @loadLevel()
 
   clicked: () =>
@@ -16,8 +17,10 @@ class Zoo
         cL.remove('done')
         @level = @level + 1
         @loadLevel()
+        @instructions.start(@level)
       else
         cL.add('done')
+        @instructions.end(@level)
         @displayLevel()
 
   loadLevel: () =>

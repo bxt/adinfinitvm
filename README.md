@@ -17,4 +17,5 @@ Then run:
       src/Grid.coffee \
       src/GridView.coffee \
       src/Levels.coffee \
+      src/Instructions.coffee \
       src/Zoo.coffee
