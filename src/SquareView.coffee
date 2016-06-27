@@ -1,14 +1,10 @@
-class SquareView
+class SquareView extends Button
   squareDesigns = new PathySquareDesigns(40, 6)
 
   constructor: (@square, @interactive) ->
-    @dom = document.createElement('a')
-    @dom.href = 'javascript:;';
-    @dom.addEventListener('click', @clicked) if @interactive
+    super()
     @refreshDom()
 
-  addTo: (parent) ->
-    parent.appendChild(@dom)
 
   clicked: (event) =>
     @square.rotate(1)

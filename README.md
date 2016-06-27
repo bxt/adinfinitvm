@@ -15,6 +15,7 @@ Then run:
       src/SquareDesigns.coffee \
       src/TriangularSquareDesigns.coffee \
       src/PathySquareDesigns.coffee \
+      src/Button.coffee \
       src/SquareView.coffee \
       src/Grid.coffee \
       src/GridView.coffee \
