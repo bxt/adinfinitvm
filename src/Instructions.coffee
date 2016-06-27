@@ -34,7 +34,7 @@ class Instructions
       when 1337
         withDashes "#1337 — 11100010 10011101 10100100"
       else
-        if "#{level}".match(/^10+$/)
-          withDashes "congratulations! you reached ##{level}"
+        if "#{level}".match(/^[15]0+$/)
+          withDashes "congratulations! you reached ##{level}. <a class=\"button\" href=\"http://twitter.com/home?status=#{encodeURIComponent("I just made it to level #{level} in @amoebe's #adinfinitvm game!")}\">tweet</a>"
         else
           withDashes "##{level}"
