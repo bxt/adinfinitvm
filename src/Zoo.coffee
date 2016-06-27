@@ -4,7 +4,7 @@ class Zoo
   constructor: () ->
     @dom = document.createElement('div')
     @dom.classList.add('zoo')
-    document.body.addEventListener('click', @clicked)
+    document.addEventListener('click', @clicked)
     @levels = new Levels()
     @level = localStorage.getItem('adinfinitvm.level')*1
     @instructions = new Instructions()
