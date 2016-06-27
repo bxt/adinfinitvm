@@ -35,10 +35,6 @@ class Zoo
     @gridView = new GridView(grid, false)
     @gridView.addTo(@dom)
 
-  next: () =>
-    document.body.classList
-    document.body.removeEventListener('click', @next)
-
   addTo: (parent) ->
     parent.appendChild(@dom)
 
