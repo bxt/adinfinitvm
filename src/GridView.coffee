@@ -5,7 +5,7 @@ class GridView
   ]
 
   constructor: (@grid) ->
-    @designIndex = 0
+    @designIndex = localStorage.getItem('adinfinitvm.designIndex') * 1
     @dom = document.createElement('div')
     @dom.classList.add('grid')
     @initializeGrid()
@@ -30,6 +30,7 @@ class GridView
 
   changeSquareDesigns: () ->
     @designIndex = (@designIndex + 1) % squareDesigns.length
+    localStorage.setItem('adinfinitvm.designIndex', @designIndex)
     for squareView in @squareViews
       squareView.changeSquareDesigns(@squareDesigns())
 
