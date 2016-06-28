@@ -41,7 +41,7 @@ class Instructions
           withDashes "##{level}"
 
   tweetMessage: (level) ->
-    tweet = "I just made it to level #{level} in @amoebe's #adinfinitvm game!
+    tweet = "I've just completed level #{level} in @amoebe's #adinfinitvm game!
              https://bxt.github.io/adinfinitvm/"
     link = "http://twitter.com/home?status=#{encodeURIComponent(tweet)}"
     withDashes """
