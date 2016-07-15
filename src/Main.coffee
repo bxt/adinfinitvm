@@ -1,9 +1,9 @@
-class Zoo
+class Main
   doneClass = 'done'
 
   constructor: () ->
     @dom = document.createElement('div')
-    @dom.classList.add('zoo')
+    @dom.classList.add('main')
     document.addEventListener('click', @clicked)
     @levels = new Levels()
     @level = localStorage.getItem('adinfinitvm.level')*1
@@ -51,6 +51,6 @@ class Zoo
     parent.appendChild(@dom)
 
 
-zoo = new Zoo()
-zoo.addTo(document.getElementById('jscontainer'))
-#console.log zoo
+main = new Main()
+main.addTo(document.getElementById('jscontainer'))
+#console.log main

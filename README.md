@@ -35,6 +35,6 @@ Then run:
       src/Levels.coffee \
       src/Instructions.coffee \
       src/Header.coffee \
-      src/Zoo.coffee
+      src/Main.coffee
 
 This will continuously watch the files for changes and recompile.
