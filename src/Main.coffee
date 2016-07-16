@@ -1,8 +1,8 @@
-class Main
+class Main extends Component
   doneClass = 'done'
 
   constructor: () ->
-    @dom = document.createElement('div')
+    super('div')
     @dom.classList.add('main')
     document.addEventListener('click', @clicked)
     @levels = new Levels()
@@ -19,7 +19,7 @@ class Main
       @gridView.changeSquareDesigns()
     @designChanger.dom.innerHTML = '♦'
     @designChanger.dom.className = 'button designChanger'
-    @designChanger.addTo(@dom)
+    @add(@designChanger)
 
   clicked: () =>
     if @gridView.isDone()
@@ -35,10 +35,10 @@ class Main
         @persistLevelProgress()
 
   loadLevel: () =>
-    @gridView?.destroy()
+    @gridView?.remove()
     grid = @levels.get(@level)
     @gridView = new GridView(grid)
-    @gridView.addTo(@dom)
+    @add(@gridView)
     @instructions.start(@level)
     @header.hide() if @level >= 4
 
@@ -46,9 +46,6 @@ class Main
     level = localStorage.getItem('adinfinitvm.level')
     if @level >= level
       localStorage.setItem('adinfinitvm.level', @level + 1)
-
-  addTo: (parent) ->
-    parent.appendChild(@dom)
 
 
 main = new Main()

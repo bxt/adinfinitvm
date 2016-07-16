@@ -1,4 +1,4 @@
-class GridView
+class GridView extends Component
   squareDesigns = [
     new PathySquareDesigns(40, 6)
     new TriangularSquareDesigns(40, 6)
@@ -6,7 +6,7 @@ class GridView
 
   constructor: (@grid) ->
     @designIndex = localStorage.getItem('adinfinitvm.designIndex') * 1
-    @dom = document.createElement('div')
+    super('div')
     @dom.classList.add('grid')
     @initializeGrid()
     @dom.addEventListener('keydown', @keydown)
@@ -63,9 +63,3 @@ class GridView
           res = res.nextSibling
         res
       )?.focus()
-
-  addTo: (parent) ->
-    parent.appendChild(@dom)
-
-  destroy: () ->
-    @dom.parentNode.removeChild(@dom)

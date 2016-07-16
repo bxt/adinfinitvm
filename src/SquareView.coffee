@@ -20,6 +20,6 @@ class SquareView extends Button
       @dom.style.transform = 'rotate(0deg)'
 
   refreshDom: () ->
-    @squareDesigns.setSquare(@square).addTo(@dom)
+    @add(@squareDesigns.setSquare(@square))
     @dom.className = 'grid-square'
     @dom.classList.add("grid-square-#{@square.id}")

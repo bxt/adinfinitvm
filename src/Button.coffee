@@ -1,11 +1,8 @@
-class Button
+class Button extends Component
   constructor: (bubble = true) ->
-    @dom = document.createElement('a')
+    super('a')
     @dom.href = 'javascript:;'
     @dom.addEventListener('click', @clickHandler, !bubble)
 
   clickHandler: (event) =>
     @clicked(event)
-
-  addTo: (parent) ->
-    parent.appendChild(@dom)
