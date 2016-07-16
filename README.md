@@ -34,6 +34,7 @@ Then run:
       src/Grid.coffee \
       src/GridView.coffee \
       src/Levels.coffee \
+      src/Interval.coffee \
       src/Instructions.coffee \
       src/Header.coffee \
       src/Main.coffee
