@@ -10,6 +10,8 @@ class Main extends Component
     @instructions = new Instructions()
     @header = new Header()
     @createDesignChanger()
+    @solver = new Solver()
+    @add(@solver)
     @loadLevel()
 
   createDesignChanger: () ->
