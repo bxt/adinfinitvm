@@ -1,31 +1,12 @@
-class Square
-  constructor: (@id) ->
-
-  setId: (id) ->
-    @id = id
-    this
-
-  rotate: (n) ->
-    #shift all n times ->
-    newId = @id >> 4 - n | @id << n & 15
-    @setId newId
-
+class Square extends BitSet(4)
   #  0
   # 3 1
   #  2
   getQuad: (quad) ->
-    @id >> quad & 1
+    @has(quad)
 
   setQuad: (quad) ->
-    @id |= 1 << quad
-    this
-
-  unsetQuad: (quad) ->
-    @id &= ~(1 << quad)
-    this
-
-  clone: ->
-    new Square(@id)
+    @add(quad)
 
   # check if pieces fit together
   checkMatch: (other, quad) ->

@@ -24,6 +24,7 @@ To compile the CoffeScript files in `src/` to Javascript, first install coffeeba
 Then run:
 
     coffeebar -wmo script.min.js \
+      src/BitSet.coffee \
       src/Square.coffee \
       src/SquareDesigns.coffee \
       src/TriangularSquareDesigns.coffee \
