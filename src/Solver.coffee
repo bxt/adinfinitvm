@@ -1,28 +1,30 @@
 class Solver extends Button
-  constructor: (@grid) ->
-    @interval = new Interval(50, @ticked)
+  constructor: (@main) ->
     super()
     @dom.innerHTML = '?'
     @dom.className = 'button solver'
-    @counter = 0
 
   clicked: (event) =>
-    @interval.toggle()
+    console.log("hm?", @)
+    counter = 0
+    while not @grid().checkAll()
+      pre = @pad(counter.toString(4))
+      counter = counter + 1
+      post = @pad(counter.toString(4))
+      for x in [0...@grid().w]
+        for y in [0...@grid().h]
+          square = @grid().getAt(x, y)
+          i = y*@grid().w + x
+          if pre[i] != post[i]
+            square.rotate(1)
+    console.log("done.")
+    for sV in @main.gridView.squareViews
+      sV.refreshDom()
 
-  ticked: () =>
-    console.log("solver tick")
-    pre = @pad(@counter.toString(4))
-    @counter = @counter + 1
-    post = @pad(@counter.toString(4))
-    for square, i in @squares()
-      if pre[i] != post[i]
-        square.click()
-
+  grid: () ->
+    @main.gridView.grid
 
   pad: (string) ->
-    while string.length < @squares().length
+    while string.length < (@grid().w * @grid().h)
       string = "0#{string}"
     string
-
-  squares: () ->
-    document.getElementsByClassName('grid-square')
