@@ -4,8 +4,7 @@ module.exports = class SquareDesign
     @circleRadius = @size*7/32
     @loadDesigns()
 
-  setSquare: (square) ->
-    @square = square
+  setSquare: (@square) ->
     this
 
   addTo: (parent) ->

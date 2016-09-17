@@ -8,8 +8,7 @@ module.exports = class SquareView extends Button
   freeze: () ->
     @frozen = true
 
-  changeSquareDesign: (squareDesign) ->
-    @squareDesign = squareDesign
+  changeSquareDesign: (@squareDesign) ->
     @refreshDom()
 
   clicked: (event) =>

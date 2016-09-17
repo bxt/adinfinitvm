@@ -5,8 +5,7 @@ module.exports = (size) ->
 
     constructor: (@id = 0) ->
 
-    setId: (id) ->
-      @id = id
+    setId: (@id) ->
       @
 
     has: (at) ->
