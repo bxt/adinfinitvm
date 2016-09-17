@@ -32,6 +32,7 @@ Then run:
       src/viewBase/Component.coffee \
       src/viewBase/Button.coffee \
       src/view/SquareView.coffee \
+      src/model/GridBase.coffee \
       src/model/Grid.coffee \
       src/view/GridView.coffee \
       src/model/Levels.coffee \

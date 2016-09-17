@@ -1,20 +1,7 @@
+class Grid extends GridBase
 
-DIRECTIONS = [
-  [ 0, -1]
-  [ 1,  0]
-  [ 0,  1]
-  [-1,  0]
-]
-
-class Grid
-  constructor: (@w, @h, @gridParts) ->
-
-  getAt: (x, y) ->
-    @gridParts[y]?[x] or new Square(0)
-
-  getAtToQuad: (x, y, quad) ->
-    offset = DIRECTIONS[quad]
-    @getAt(x + offset[0], y + offset[1])
+  newDefault: ->
+    new Square(0)
 
   checkAll: ->
     for x in [0...@w]
