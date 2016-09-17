@@ -32,6 +32,9 @@ Then run:
 
 This will continuously watch the files for changes and recompile.
 
+Testing
+-------
+
 To test install:
 
     npm install -g mocha
@@ -40,3 +43,16 @@ To test install:
 Then run:
 
     mocha -w --compilers coffee:coffee-script/register
+
+Debugger
+--------
+
+First install the awesome [`node-inspector`](https://github.com/node-inspector/node-inspector):
+
+    npm install -g node-inspector
+
+Put the keyword `debugger` somewhere in your code. Then run:
+
+    node-debug _mocha --compilers coffee:coffee-script/register
+
+Et voila! You stop at a breakpoint where you put your `debugger` keyword.
