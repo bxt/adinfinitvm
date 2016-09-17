@@ -20,6 +20,18 @@ BitSet = (size) ->
       @id &= ~(1 << at % size)
       @
 
+    clear: () ->
+      @setId(0)
+
+    map = (cb) ->
+      cb(i) for i in [0...size] when @has(i)
+
+    filter = (cb) ->
+      for i in [0...size]
+        if @has(i)
+          @remove(i) unless cb(i)
+      @
+
     rotate: (n) ->
       #shift all n times ->
       newId = @id >> @constructor.size - n | @id << n & @constructor.allId
