@@ -1,4 +1,6 @@
-class Square extends BitSet(4)
+BitSet = require('./BitSet')
+
+module.exports = class Square extends BitSet(4)
   #  0
   # 3 1
   #  2

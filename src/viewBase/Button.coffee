@@ -1,4 +1,6 @@
-class Button extends Component
+Component = require('./Component')
+
+module.exports = class Button extends Component
   constructor: (bubble = true) ->
     super('a')
     @dom.href = 'javascript:;'

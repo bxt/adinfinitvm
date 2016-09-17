@@ -1,4 +1,7 @@
-class Grid extends GridBase
+GridBase = require('./GridBase')
+Square = require('./Square')
+
+module.exports = class Grid extends GridBase
 
   newDefault: ->
     new Square(0)

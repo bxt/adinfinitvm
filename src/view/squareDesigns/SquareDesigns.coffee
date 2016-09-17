@@ -1,4 +1,4 @@
-class SquareDesigns
+module.exports = class SquareDesigns
   constructor: (@size, @width) ->
     @halfSize = @size/2
     @circleRadius = @size*7/32

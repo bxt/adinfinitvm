@@ -1,4 +1,7 @@
-class Levels
+Square = require('./Square')
+Grid = require('./Grid')
+
+module.exports = class Levels
   constructor: () ->
 
   get: (level) ->

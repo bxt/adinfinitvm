@@ -17,30 +17,17 @@ Developing
 
 The game is written in CoffeScript without any additional libraries.
 
-To compile the CoffeScript files in `src/` to Javascript, first install coffeebar:
+To compile the CoffeScript files in `src/` to Javascript, first install:
 
-    npm install -g coffeebar
+    npm install -g watchify
+    npm install coffeeify minifyify
 
 Then run:
 
-    coffeebar -wmo script.min.js \
-      src/model/BitSet.coffee \
-      src/model/Square.coffee \
-      src/view/squareDesigns/SquareDesigns.coffee \
-      src/view/squareDesigns/TriangularSquareDesigns.coffee \
-      src/view/squareDesigns/PathySquareDesigns.coffee \
-      src/viewBase/Component.coffee \
-      src/viewBase/Button.coffee \
-      src/view/SquareView.coffee \
-      src/model/GridBase.coffee \
-      src/model/Grid.coffee \
-      src/view/GridView.coffee \
-      src/model/Levels.coffee \
-      src/view/Instructions.coffee \
-      src/view/Header.coffee \
-      src/model/Solver.coffee \
-      src/view/Solve.coffee \
-      src/view/App.coffee \
-      src/main.coffee
+    watchify \
+      src/main.coffee \
+      -t coffeeify --extension=".coffee" \
+      -d -p [minifyify --map script.min.js.map --output script.min.js.map] \
+      -v -o script.min.js
 
 This will continuously watch the files for changes and recompile.

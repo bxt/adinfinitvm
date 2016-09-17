@@ -1,4 +1,4 @@
-class Header
+module.exports = class Header
   constructor: ->
     @dom = document.getElementsByTagName('h2')[0]
 

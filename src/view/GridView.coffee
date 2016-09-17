@@ -1,4 +1,9 @@
-class GridView extends Component
+Component = require('../viewBase/Component')
+PathySquareDesigns = require('./squareDesigns/PathySquareDesigns')
+TriangularSquareDesigns = require('./squareDesigns/TriangularSquareDesigns')
+SquareView = require('./SquareView')
+
+module.exports = class GridView extends Component
   squareDesigns = [
     new PathySquareDesigns(40, 6)
     new TriangularSquareDesigns(40, 6)

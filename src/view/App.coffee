@@ -1,4 +1,12 @@
-class App extends Component
+Component = require('../viewBase/Component')
+Levels = require('../model/Levels')
+Instructions = require('./Instructions')
+Header = require('./Header')
+Solve = require('./Solve')
+Button = require('../viewBase/Button')
+GridView = require('./GridView')
+
+module.exports = class App extends Component
   doneClass = 'done'
 
   constructor: () ->

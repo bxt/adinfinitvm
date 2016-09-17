@@ -1,4 +1,4 @@
-BitSet = (size) ->
+module.exports = (size) ->
   class
     @size = size
     @allId = (1 << size) - 1

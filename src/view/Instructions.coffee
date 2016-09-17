@@ -1,4 +1,4 @@
-class Instructions
+module.exports = class Instructions
   withDashes = (string) -> "— #{string} —"
 
   constructor: () ->

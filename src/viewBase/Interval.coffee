@@ -1,4 +1,4 @@
-class Interval
+module.exports = class Interval
   constructor: (@time, @callback) ->
 
   isRunning: () ->

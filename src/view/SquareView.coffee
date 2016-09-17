@@ -1,4 +1,6 @@
-class SquareView extends Button
+Button = require('../viewBase/Button')
+
+module.exports = class SquareView extends Button
   constructor: (@square, @squareDesigns) ->
     super()
     @refreshDom()

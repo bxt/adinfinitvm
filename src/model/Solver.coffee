@@ -1,4 +1,4 @@
-class Solver
+module.exports = class Solver
   solve: (grid) =>
     counter = 0
     squares = grid.w * grid.h

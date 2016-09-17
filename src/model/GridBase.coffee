@@ -6,7 +6,7 @@ DIRECTIONS = [
   [-1,  0]
 ]
 
-class GridBase
+module.exports = class GridBase
   constructor: (@w, @h, @gridParts) ->
 
   getAt: (x, y) ->

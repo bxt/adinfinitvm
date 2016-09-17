@@ -1,4 +1,4 @@
-class Component
+module.exports = class Component
   constructor: (elementType) ->
     @dom = document.createElement(elementType)
 

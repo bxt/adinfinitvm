@@ -1,4 +1,6 @@
-class PathySquareDesigns extends SquareDesigns
+SquareDesigns = require('./SquareDesigns')
+
+module.exports = class PathySquareDesigns extends SquareDesigns
   loadDesigns: () ->
     super()
     @loadPaths()

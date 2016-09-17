@@ -1,4 +1,6 @@
-class TriangularSquareDesigns extends SquareDesigns
+SquareDesigns = require('./SquareDesigns')
+
+module.exports = class TriangularSquareDesigns extends SquareDesigns
   loadDesigns: () ->
     super()
 

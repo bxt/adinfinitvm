@@ -1,4 +1,7 @@
-class Solve extends Button
+Button = require('../viewBase/Button')
+Solver = require('../model/Solver')
+
+module.exports = class Solve extends Button
   constructor: (@main) ->
     super()
     @dom.innerHTML = '?'
