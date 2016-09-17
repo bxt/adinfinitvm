@@ -31,3 +31,12 @@ Then run:
       -v -o script.min.js
 
 This will continuously watch the files for changes and recompile.
+
+To test install:
+
+    npm install -g mocha
+    npm install chai
+
+Then run:
+
+    mocha -w --compilers coffee:coffee-script/register
