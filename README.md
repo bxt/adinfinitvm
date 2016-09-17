@@ -24,21 +24,21 @@ To compile the CoffeScript files in `src/` to Javascript, first install coffeeba
 Then run:
 
     coffeebar -wmo script.min.js \
-      src/BitSet.coffee \
-      src/Square.coffee \
-      src/SquareDesigns.coffee \
-      src/TriangularSquareDesigns.coffee \
-      src/PathySquareDesigns.coffee \
-      src/Component.coffee \
-      src/Button.coffee \
-      src/SquareView.coffee \
-      src/Grid.coffee \
-      src/GridView.coffee \
-      src/Levels.coffee \
-      src/Interval.coffee \
-      src/Solver.coffee \
-      src/Instructions.coffee \
-      src/Header.coffee \
-      src/Main.coffee
+      src/model/BitSet.coffee \
+      src/model/Square.coffee \
+      src/view/squareDesigns/SquareDesigns.coffee \
+      src/view/squareDesigns/TriangularSquareDesigns.coffee \
+      src/view/squareDesigns/PathySquareDesigns.coffee \
+      src/viewBase/Component.coffee \
+      src/viewBase/Button.coffee \
+      src/view/SquareView.coffee \
+      src/model/Grid.coffee \
+      src/view/GridView.coffee \
+      src/model/Levels.coffee \
+      src/model/Solver.coffee \
+      src/view/Instructions.coffee \
+      src/view/Header.coffee \
+      src/view/App.coffee \
+      src/main.coffee
 
 This will continuously watch the files for changes and recompile.
