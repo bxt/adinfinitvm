@@ -29,11 +29,11 @@ module.exports = class App extends Component
     if @gridView.isDone()
       cL = document.body.classList
       if cL.contains(doneClass)
-        cL.remove('done')
+        cL.remove(doneClass)
         @level = @level + 1
         @loadLevel()
       else
-        cL.add('done')
+        cL.add(doneClass)
         @gridView.freeze()
         @instructions.end(@level)
         @persistLevelProgress()
