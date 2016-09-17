@@ -1,6 +1,6 @@
-SquareDesigns = require('./SquareDesigns')
+SquareDesign = require('./SquareDesign')
 
-module.exports = class PathySquareDesigns extends SquareDesigns
+module.exports = class PathySquareDesign extends SquareDesign
   loadDesigns: () ->
     super()
     @loadPaths()

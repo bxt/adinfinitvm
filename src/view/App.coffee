@@ -2,6 +2,7 @@ Component = require('../viewBase/Component')
 Levels = require('../model/Levels')
 Instructions = require('./Instructions')
 Header = require('./Header')
+DesignChanger = require('./DesignChanger')
 Solve = require('./Solve')
 Button = require('../viewBase/Button')
 GridView = require('./GridView')
@@ -17,19 +18,12 @@ module.exports = class App extends Component
     @level = localStorage.getItem('adinfinitvm.level')*1
     @instructions = new Instructions()
     @header = new Header()
-    @createDesignChanger()
+    @designChanger = new DesignChanger (squareDesign) =>
+      @gridView?.changeSquareDesign(squareDesign)
+    @add(@designChanger)
     @solve = new Solve(@)
     @add(@solve)
     @loadLevel()
-
-  createDesignChanger: () ->
-    @designChanger = new Button()
-    @designChanger.clicked = (event) =>
-      event.stopPropagation()
-      @gridView.changeSquareDesigns()
-    @designChanger.dom.innerHTML = '♦'
-    @designChanger.dom.className = 'button designChanger'
-    @add(@designChanger)
 
   clicked: () =>
     if @gridView.isDone()
@@ -47,7 +41,7 @@ module.exports = class App extends Component
   loadLevel: () =>
     @gridView?.remove()
     grid = @levels.get(@level)
-    @gridView = new GridView(grid)
+    @gridView = new GridView(grid, @designChanger.squareDesign())
     @add(@gridView)
     @instructions.start(@level)
     @header.hide() if @level >= 4

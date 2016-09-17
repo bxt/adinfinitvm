@@ -1,15 +1,15 @@
 Button = require('../viewBase/Button')
 
 module.exports = class SquareView extends Button
-  constructor: (@square, @squareDesigns) ->
+  constructor: (@square, @squareDesign) ->
     super()
     @refreshDom()
 
   freeze: () ->
     @frozen = true
 
-  changeSquareDesigns: (squareDesigns) ->
-    @squareDesigns = squareDesigns
+  changeSquareDesign: (squareDesign) ->
+    @squareDesign = squareDesign
     @refreshDom()
 
   clicked: (event) =>
@@ -22,6 +22,6 @@ module.exports = class SquareView extends Button
       @dom.style.transform = 'rotate(0deg)'
 
   refreshDom: () ->
-    @add(@squareDesigns.setSquare(@square))
+    @add(@squareDesign.setSquare(@square))
     @dom.className = 'grid-square'
     @dom.classList.add("grid-square-#{@square.id}")

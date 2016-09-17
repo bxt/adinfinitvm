@@ -1,16 +1,8 @@
 Component = require('../viewBase/Component')
-PathySquareDesigns = require('./squareDesigns/PathySquareDesigns')
-TriangularSquareDesigns = require('./squareDesigns/TriangularSquareDesigns')
 SquareView = require('./SquareView')
 
 module.exports = class GridView extends Component
-  squareDesigns = [
-    new PathySquareDesigns(40, 6)
-    new TriangularSquareDesigns(40, 6)
-  ]
-
-  constructor: (@grid) ->
-    @designIndex = localStorage.getItem('adinfinitvm.designIndex') * 1
+  constructor: (@grid, @squareDesign) ->
     super('div')
     @dom.classList.add('grid')
     @initializeGrid()
@@ -23,7 +15,7 @@ module.exports = class GridView extends Component
       row = document.createElement('div')
       row.classList.add('grid-row')
       for x in [0...@grid.w]
-        squareView = new SquareView(@grid.getAt(x, y), @squareDesigns())
+        squareView = new SquareView(@grid.getAt(x, y), @squareDesign)
         @squareViews.push(squareView)
         squareView.addTo(row)
       @dom.appendChild(row)
@@ -33,14 +25,9 @@ module.exports = class GridView extends Component
     for squareView in @squareViews
       squareView.freeze()
 
-  changeSquareDesigns: () ->
-    @designIndex = (@designIndex + 1) % squareDesigns.length
-    localStorage.setItem('adinfinitvm.designIndex', @designIndex)
+  changeSquareDesign: (@squareDesign) ->
     for squareView in @squareViews
-      squareView.changeSquareDesigns(@squareDesigns())
-
-  squareDesigns: () ->
-    squareDesigns[@designIndex]
+      squareView.changeSquareDesign(@squareDesign)
 
   isDone: () =>
     @grid.checkAll()
