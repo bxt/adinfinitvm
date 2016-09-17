@@ -37,6 +37,10 @@ describe 'Square', ->
         { one: 0xF, two: 0x8, expected: true }
         { one: 0x5, two: 0x5, expected: true }
         { one: 0x5, two: 0xA, expected: false }
+        { one: 0x2, two: 0x1, expected: false }
+        { one: 0x2, two: 0x2, expected: false }
+        { one: 0x2, two: 0x4, expected: false }
+        { one: 0x2, two: 0x8, expected: true }
       ]
       2: [
         { one: 0x0, two: 0x1, expected: false }
