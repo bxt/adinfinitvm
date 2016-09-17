@@ -26,6 +26,9 @@ BitSet = (size) ->
     map = (cb) ->
       cb(i) for i in [0...size] when @has(i)
 
+    toArray = (cb) ->
+      i for i in [0...size] when @has(i)
+
     filter = (cb) ->
       for i in [0...size]
         if @has(i)
