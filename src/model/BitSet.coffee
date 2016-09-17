@@ -1,4 +1,5 @@
 module.exports = (size) ->
+  throw new RangeError("BitSet is only safe for up to 53 elements") if size > 53
   class
     @size = size
     @allId = (1 << size) - 1
@@ -22,16 +23,20 @@ module.exports = (size) ->
     clear: () ->
       @setId(0)
 
-    map: (cb) ->
-      cb(i) for i in [0...size] when @has(i)
+    map: (callback, thisArg = @) ->
+      callback.call(thisArg, i) for i in [0...size] when @has(i)
 
-    toArray: (cb) ->
-      i for i in [0...size] when @has(i)      
+    toArray: () ->
+      i for i in [0...size] when @has(i)
 
-    filter: (cb) ->
+    filter: (callback, thisArg = @) ->
       for i in [0...size]
         if @has(i)
-          @remove(i) unless cb(i)
+          @remove(i) unless callback.call(thisArg, i)
+      @
+
+    addAll: (ats) ->
+      @add(at) for at in ats
       @
 
     length: () ->
