@@ -15,11 +15,11 @@ describe 'BitSet', ->
       { id: 0xF, expected: [0, 1, 2, 3] }
     ]
 
-    tests.forEach (test) ->
-      it "yields [#{test.expected}] with id 0x#{test.id.toString(16)}", ->
+    tests.forEach ({id, expected}) ->
+      it "yields [#{expected}] with id 0x#{id.toString(16)}", ->
         bitSet = new (BitSet(4))
-        bitSet.setId(test.id)
-        expect(bitSet.toArray()).to.eql(test.expected)
+        bitSet.setId(id)
+        expect(bitSet.toArray()).to.eql(expected)
 
     it 'resets the other values', ->
       bitSet = new (BitSet(4))

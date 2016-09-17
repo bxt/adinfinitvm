@@ -24,12 +24,12 @@ describe 'Possibilities', ->
       { id: 0xF, expected: 32768 }
     ]
 
-    tests.forEach (test) ->
-      it "for square with id #{test.id} returns id #{test.expected}", ->
-        mockSquare = id: test.id
+    tests.forEach ({id, expected}) ->
+      it "for square with id #{id} returns id #{expected}", ->
+        mockSquare = id: id
         possibilities = Possibilities.forSquare(mockSquare)
-        expect(possibilities).to.be.ok.and.have.property('id', test.expected)
-        expect(possibilities.id).to.equal(test.expected)
+        expect(possibilities).to.be.ok.and.have.property('id', expected)
+        expect(possibilities.id).to.equal(expected)
 
   describe '#@eliminiate()', ->
     parsePossibilities = (element) ->
