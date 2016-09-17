@@ -1,10 +1,4 @@
-
-DIRECTIONS = [
-  [ 0, -1]
-  [ 1,  0]
-  [ 0,  1]
-  [-1,  0]
-]
+Quad = require('./Quad')
 
 module.exports = class GridBase
   constructor: (@w, @h, @gridParts) ->
@@ -13,5 +7,5 @@ module.exports = class GridBase
     @gridParts[y]?[x] or @newDefault()
 
   getAtToQuad: (x, y, quad) ->
-    offset = DIRECTIONS[quad]
+    offset = Quad.direction(quad)
     @getAt(x + offset[0], y + offset[1])

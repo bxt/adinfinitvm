@@ -1,5 +1,6 @@
 Square = require('./Square')
 Grid = require('./Grid')
+Quad = require('./Quad')
 
 module.exports = class Levels
   constructor: () ->
@@ -37,7 +38,7 @@ module.exports = class Levels
         quads.push(2) unless y == h-1
         for quad in quads
           if random() < density
-            antiquad = quad + 2 & 3
+            antiquad = Quad.oppositeOf(quad)
             grid.getAt(x, y).setQuad(quad)
             grid.getAtToQuad(x, y, quad).setQuad(antiquad)
             if symmetric
