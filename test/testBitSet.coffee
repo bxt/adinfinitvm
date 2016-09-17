@@ -44,14 +44,25 @@ describe 'BitSet', ->
   describe '#add()', ->
     it 'adds any values', ->
       bitSet = new (BitSet(10))
+      expect(bitSet.has(0)).to.not.be.ok
       expect(bitSet.has(3)).to.not.be.ok
       bitSet.add(3)
+      expect(bitSet.has(0)).to.not.be.ok
+      expect(bitSet.has(3)).to.be.ok
+      bitSet.add(0)
+      expect(bitSet.has(0)).to.be.ok
       expect(bitSet.has(3)).to.be.ok
     it 'moduluses higher values', ->
       bitSet = new (BitSet(10))
       expect(bitSet.has(3)).to.not.be.ok
       bitSet.add(13)
       expect(bitSet.has(3)).to.be.ok
+    it 'does nothing when the value exists', ->
+      bitSet = new (BitSet(10))
+      bitSet.add(3)
+      beforeId = bitSet.id
+      bitSet.add(3)
+      expect(bitSet.id).to.equal(beforeId)
 
   describe '#remove()', ->
     it 'removes the given value', ->

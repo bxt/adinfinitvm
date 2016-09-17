@@ -4,7 +4,7 @@ Square = require('../src/model/Square')
 
 describe 'Square', ->
 
-  describe '#@checkMatch()', ->
+  describe '#checkMatch()', ->
     tests =
       0: [
         { one: 0x0, two: 0x1, expected: true }
