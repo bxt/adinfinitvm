@@ -35,9 +35,10 @@ Then run:
       src/model/Grid.coffee \
       src/view/GridView.coffee \
       src/model/Levels.coffee \
-      src/model/Solver.coffee \
       src/view/Instructions.coffee \
       src/view/Header.coffee \
+      src/model/Solver.coffee \
+      src/view/Solve.coffee \
       src/view/App.coffee \
       src/main.coffee
 

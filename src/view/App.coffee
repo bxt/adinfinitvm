@@ -10,8 +10,8 @@ class App extends Component
     @instructions = new Instructions()
     @header = new Header()
     @createDesignChanger()
-    @solver = new Solver(@)
-    @add(@solver)
+    @solve = new Solve(@)
+    @add(@solve)
     @loadLevel()
 
   createDesignChanger: () ->
