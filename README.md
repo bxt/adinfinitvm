@@ -15,7 +15,7 @@ edge-matching puzzle without displacing pieces.
 Developing
 ----------
 
-The game is written in CoffeScript without any additional libraries.
+The game is written in [CoffeScript](http://coffeescript.org/) without any additional libraries.
 
 To compile the CoffeScript files in `src/` to Javascript, first install:
 
@@ -40,7 +40,7 @@ To test install:
     npm install -g mocha
     npm install chai
 
-Then run:
+The test framework is [Mocha](https://mochajs.org/) and Chai is used [for assertions](http://chaijs.com/api/bdd/). Then run:
 
     mocha -w --compilers coffee:coffee-script/register
 
