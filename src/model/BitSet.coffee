@@ -23,19 +23,24 @@ module.exports = (size) ->
     clear: () ->
       @setId(0)
 
-    map = (cb) ->
+    map: (cb) ->
       cb(i) for i in [0...size] when @has(i)
 
-    toArray = (cb) ->
-      i for i in [0...size] when @has(i)
+    toArray: (cb) ->
+      i for i in [0...size] when @has(i)      
 
-    filter = (cb) ->
+    filter: (cb) ->
       for i in [0...size]
         if @has(i)
           @remove(i) unless cb(i)
       @
 
-    rotate: (n) ->
+    length: () ->
+      length = 0
+      length++ for i in [0...size] when @has(i)
+      length
+
+    rotate: (n=1) ->
       #shift all n times ->
       newId = @id >> @constructor.size - n | @id << n & @constructor.allId
       @setId newId
