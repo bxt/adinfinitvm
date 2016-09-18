@@ -4,7 +4,8 @@ Quad = require('../Quad')
 DictSet = require('./DictSet')
 
 module.exports = class PossibilityGrid extends GridBase
-  createTodo: () -> new DictSet(([x, y]) => y*@w + x)
+  createTodo: () ->
+    new DictSet(([x, y]) => y*@w + x)
 
   newDefault: ->
     new Possibilities(1)
