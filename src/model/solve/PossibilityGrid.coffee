@@ -38,3 +38,12 @@ module.exports = class PossibilityGrid extends GridBase
 
   solved: () ->
     @toArray().every (possibilities) -> possibilities.length() == 1
+
+  solvable: () ->
+    @toArray().every (possibilities) -> possibilities.length() > 0
+
+  applyToGrid: (grid) ->
+    for [x, y] in grid.allCoordinates()
+      possibilitiesArray = @getAt(x, y).toArray()
+      if possibilitiesArray.length == 1
+        grid.getAt(x, y).setId(possibilitiesArray[0])
