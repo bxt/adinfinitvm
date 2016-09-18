@@ -5,7 +5,7 @@ module.exports = class SquareDesign
     @loadDesigns()
 
   setSquare: (@square) ->
-    this
+    @
 
   addTo: (parent) ->
     parent.innerHTML = @designs[@square.id]
