@@ -60,8 +60,7 @@ module.exports = class Levels
     Math.floor(random()*(to-from)+from)
 
   makeGrid = (w, h, values) ->
-    gridParts = ((new Square(values[x + y * w]) for x in [0...w]) for y in [0...h])
-    myGrid = new Grid(w, h, gridParts)
+    new Grid(w, h, (x, y) -> new Square(values[x + y * w]))
 
   shuffle = (grid) ->
     for x in [0...grid.w]
