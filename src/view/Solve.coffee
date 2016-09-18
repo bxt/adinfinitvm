@@ -8,9 +8,7 @@ module.exports = class Solve extends Button
     @dom.className = 'button solver'
 
   clicked: (event) =>
-    console.log("hm?", @)
     solver = new Solver
     solver.solve(@main.gridView.grid)
-    console.log("done.")
     for sV in @main.gridView.squareViews
       sV.refreshDom()
