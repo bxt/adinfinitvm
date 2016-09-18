@@ -6,25 +6,29 @@ module.exports = class Solver
     possibilityGrid = new PossibilityGrid grid.w, grid.h,
       (x, y) -> Possibilities.forSquare(grid.getAt(x, y))
 
-    stack = []
     possibilityGrid.eliminiateInitial()
+    stack = []
     stack.push([0, possibilityGrid])
+    backtracks = 0
 
     loop
       [toFix, possibilityGrid] = stack.pop()
       break if possibilityGrid.solved()
-      console.log "popping #{toFix}"
       result = @fixOnePossibility(toFix, possibilityGrid)
-      unless result.deadend or result.exhausted
+      if result.deadend
+        backtracks++
+      else if result.exhausted
+        throw new Error("Invalid State")
+      else
         for newWay in result
           stack.push(newWay)
-      else
-        console.log result
 
     for [x, y] in grid.allCoordinates()
       possibilitiesArray = possibilityGrid.getAt(x, y).toArray()
       if possibilitiesArray.length == 1
         grid.getAt(x, y).setId(possibilitiesArray[0])
+
+    backtracks
 
   fixOnePossibility: (toFix, possibilityGrid) ->
     i = toFix
@@ -38,7 +42,6 @@ module.exports = class Solver
         if i < 0
           index = possibilitiesArray.length + i
           oldPossibilityGrid = possibilityGrid.clone()
-          console.log "fixing #{[x, y]}"
           possibilities.clear().add(possibilitiesArray[index])
           possibilityGrid.eliminiateFrom([x, y])
           return [[toFix+1, oldPossibilityGrid], [0, possibilityGrid]]

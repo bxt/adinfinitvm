@@ -2,13 +2,14 @@ Button = require('../viewBase/Button')
 Solver = require('../model/solve/Solver')
 
 module.exports = class Solve extends Button
-  constructor: (@main) ->
+  constructor: (@app) ->
     super()
     @dom.innerHTML = '?'
     @dom.className = 'button solver'
 
   clicked: (event) =>
     solver = new Solver
-    solver.solve(@main.gridView.grid)
-    for sV in @main.gridView.squareViews
+    backtracks = solver.solve(@app.gridView.grid)
+    # console.log backtracks, @app.level
+    for sV in @app.gridView.squareViews
       sV.refreshDom()
