@@ -36,7 +36,7 @@ describe 'Possibilities', ->
       if toString.call(element) == "[object String]"
         Possibilities.forSquare(id: parseInt(element))
       else if toString.call(element) == "[object Number]"
-        new Possibilities().addAll([element])
+        new Possibilities().add(element)
       else
         new Possibilities().addAll(element)
 

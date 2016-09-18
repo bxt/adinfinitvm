@@ -56,3 +56,16 @@ Put the keyword `debugger` somewhere in your code. Then run:
     node-debug _mocha --compilers coffee:coffee-script/register
 
 Et voila! You stop at a breakpoint where you put your `debugger` keyword.
+
+Linter
+------
+
+First install:
+
+    npm install -g coffeelint
+
+Then run:
+
+    find src -type f -iname '*.coffee' | xargs coffeelint
+
+This will show a list of code problems.
