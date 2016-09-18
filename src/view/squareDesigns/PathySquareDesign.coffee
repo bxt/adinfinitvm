@@ -27,7 +27,7 @@ module.exports = class PathySquareDesign extends SquareDesign
     @designs[0] = @layout("")
 
   load1Designs: () ->
-    for i in [1,2,4,8]
+    for i in [1, 2, 4, 8]
       @designs[i] = @layout """
       <path d="#{@paths[i]}" #{@styleWhite()} />
       <circle cx="#{@halfSize}" cy="#{@halfSize}" r="#{@circleRadius}" #{@styleWhite()} />
@@ -36,15 +36,15 @@ module.exports = class PathySquareDesign extends SquareDesign
       """
 
   load2Designs: () ->
-    for i in [5,10,3,6,9,12]
+    for i in [5, 10, 3, 6, 9, 12]
       @designs[i] = @layout """
       <path d="#{@paths[i]}" #{@styleWhite()} />
       <path d="#{@paths[i]}" #{@style()} />
       """
 
   load3Designs: () ->
-    for i in [7,11,13,14]
-      paths = for k in [3,6,9,12] when not (i & k ^ k)
+    for i in [7, 11, 13, 14]
+      paths = for k in [3, 6, 9, 12] when not (i & k ^ k)
         """
         <path d="#{@paths[k]}" #{@styleWhite()} />
         <path d="#{@paths[k]}" #{@style()} />
@@ -52,7 +52,7 @@ module.exports = class PathySquareDesign extends SquareDesign
       @designs[i] = @layout(paths.join(''))
 
   load4Designs: () ->
-    paths = for k in [3,6,12,9]
+    paths = for k in [3, 6, 12, 9]
       """
       <path d="#{@paths[k]}" #{@styleWhite()} />
       <path d="#{@paths[k]}" #{@style()} />

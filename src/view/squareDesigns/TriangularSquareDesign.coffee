@@ -11,7 +11,7 @@ module.exports = class TriangularSquareDesign extends SquareDesign
       8: "M0 #{@size} L#{@halfSize} #{@halfSize} L0 0 Z"
 
     for i in [0...16]
-      paths = for k,path of @paths when (i & k) > 0
+      paths = for k, path of @paths when (i & k) > 0
         "<path d=\"#{path}\" #{@style()} />"
       @designs[i] = @layout(paths.join('paths'))
 
