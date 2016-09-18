@@ -63,9 +63,7 @@ module.exports = class Levels
     new Grid(w, h, (x, y) -> new Square(values[x + y * w]))
 
   shuffle = (grid) ->
-    for x in [0...grid.w]
-      for y in [0...grid.h]
-        grid.getAt(x, y).rotate(rand(0, 4))
+    square.rotate(rand(0, 4)) for square in grid.toArray()
     grid
 
   fixedLevels =

@@ -9,9 +9,15 @@ module.exports = class GridBase
         for x in [0...@w]
           @gridParts.call(@, x, y)
 
+  contains: (x, y) ->
+    x >= 0 && y >= 0 && x < @w && y < @h
+
   getAt: (x, y) ->
     @gridParts[y]?[x] or @newDefault()
 
   getAtToQuad: (x, y, quad) ->
     offset = Quad.direction(quad)
     @getAt(x + offset[0], y + offset[1])
+
+  toArray: () ->
+    [].concat(@gridParts...)
