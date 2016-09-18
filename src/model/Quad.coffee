@@ -16,3 +16,7 @@ module.exports = class Quad
 
   @oppositeOf: (quad) ->
     quad + 2 & 3
+
+  @neighbors: (x, y) ->
+    for [xOffs, yOffs] in Quad.allDirections
+      [x + xOffs, y + yOffs]
