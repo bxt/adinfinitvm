@@ -1,5 +1,5 @@
 Button = require('../viewBase/Button')
-Solver = require('../model/Solver')
+Solver = require('../model/solve/Solver')
 
 module.exports = class Solve extends Button
   constructor: (@main) ->
