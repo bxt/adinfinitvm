@@ -21,3 +21,9 @@ module.exports = class GridBase
 
   toArray: () ->
     [].concat(@gridParts...)
+
+  allCoordinates: () ->
+    [].concat(
+      (for x in [0...@w]
+        for y in [0...@h]
+          [x, y])...)

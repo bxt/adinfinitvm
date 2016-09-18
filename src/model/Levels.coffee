@@ -31,24 +31,23 @@ module.exports = class Levels
     w = rand(wRange..., random)
     h = rand(hRange..., random)
     grid = new Grid(w, h)
-    for x in [0...w]
-      for y in [0...h]
-        quads = []
-        quads.push(1) unless x == w-1
-        quads.push(2) unless y == h-1
-        for quad in quads
-          if random() < density
-            antiquad = Quad.oppositeOf(quad)
-            grid.getAt(x, y).setQuad(quad)
-            grid.getAtToQuad(x, y, quad).setQuad(antiquad)
-            if symmetric
-              antiX = w - x - 1
-              if quad is 1 # left
-                grid.getAt(antiX, y).setQuad(antiquad)
-                grid.getAtToQuad(antiX, y, antiquad).setQuad(quad)
-              else # bottom
-                grid.getAt(antiX, y).setQuad(quad)
-                grid.getAtToQuad(antiX, y, quad).setQuad(antiquad)
+    for [x, y] in grid.allCoordinates()
+      quads = []
+      quads.push(1) unless x == w-1
+      quads.push(2) unless y == h-1
+      for quad in quads
+        if random() < density
+          antiquad = Quad.oppositeOf(quad)
+          grid.getAt(x, y).setQuad(quad)
+          grid.getAtToQuad(x, y, quad).setQuad(antiquad)
+          if symmetric
+            antiX = w - x - 1
+            if quad is 1 # left
+              grid.getAt(antiX, y).setQuad(antiquad)
+              grid.getAtToQuad(antiX, y, antiquad).setQuad(quad)
+            else # bottom
+              grid.getAt(antiX, y).setQuad(quad)
+              grid.getAtToQuad(antiX, y, quad).setQuad(antiquad)
     grid
 
   seedRandom = (seed) ->
