@@ -10,17 +10,14 @@ module.exports = class Solver
 
     stack = []
     stack.push([0, possibilityGrid])
-    backtracks = 0
     loop
       [fixIndex, possibilityGrid] = stack.pop()
       break if possibilityGrid.solved()
-      unless possibilityGrid.solvable()
-        backtracks++
-        continue
+      continue unless possibilityGrid.solvable()
       stack.push(r) for r in @fixPossibility(fixIndex, possibilityGrid)
 
     possibilityGrid.applyToGrid(grid)
-    backtracks
+    @
 
   fixPossibility: (fixIndex, possibilityGrid) ->
     i = fixIndex
