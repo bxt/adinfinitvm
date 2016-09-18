@@ -30,7 +30,7 @@ module.exports = class Levels
     density = density/2 if symmetric
     w = rand(wRange..., random)
     h = rand(hRange..., random)
-    grid = makeGrid(w, h, (0 for x in [0...w*h]))
+    grid = new Grid(w, h)
     for x in [0...w]
       for y in [0...h]
         quads = []

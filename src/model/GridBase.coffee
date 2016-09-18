@@ -2,6 +2,8 @@ Quad = require('./Quad')
 
 module.exports = class GridBase
   constructor: (@w, @h, @gridParts) ->
+    unless @gridParts?
+      @gridParts = (x, y) -> @newDefault()
     if @gridParts.call
       @gridParts = for y in [0...@h]
         for x in [0...@w]
