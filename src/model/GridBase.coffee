@@ -27,3 +27,6 @@ module.exports = class GridBase
       (for x in [0...@w]
         for y in [0...@h]
           [x, y])...)
+
+  clone: () ->
+    new @constructor(@w, @h, (x, y) => @getAt(x, y).clone())

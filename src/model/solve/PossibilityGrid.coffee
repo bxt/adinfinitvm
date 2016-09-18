@@ -4,17 +4,26 @@ Quad = require('../Quad')
 DictSet = require('./DictSet')
 
 module.exports = class PossibilityGrid extends GridBase
+  createTodo: () -> new DictSet(([x, y]) => y*@w + x)
+
   newDefault: ->
     new Possibilities(1)
 
-  eliminiate: ->
-    todo = new DictSet(([x, y]) => y*@w + x)
-    for x in [0...@w]
-      for y in [0...@h]
-        if x is 0 or y is 0 or x is @w-1 or y is @h-1 or
-            @getAt(x, y).length() is 1
-          todo.add([x, y])
+  eliminiateFrom: ([x, y]) ->
+    todo = @createTodo()
+    for neighbor in Quad.neighbors(x, y)
+      todo.add(neighbor)
+    @eliminiate(todo)
 
+  eliminiateInitial: ->
+    todo = @createTodo()
+    for [x, y] in @allCoordinates()
+      if x is 0 or y is 0 or x is @w-1 or y is @h-1 or
+          @getAt(x, y).length() is 1
+        todo.add([x, y])
+    @eliminiate(todo)
+
+  eliminiate: (todo) ->
     while item = todo.pop()
       [x, y] = item
       continue unless @contains(x, y)
@@ -23,8 +32,9 @@ module.exports = class PossibilityGrid extends GridBase
         pre = possibilities.id
         possibilities.eliminiate(@getAtToQuad(x, y, quad), quad)
         if pre != possibilities.id
-          for [xOffs, yOffs] in Quad.allDirections
-            todo.add([x + xOffs, y + yOffs])
+          for neighbor in Quad.neighbors(x, y)
+            todo.add(neighbor)
+    @
 
   solved: () ->
     @toArray().every (possibilities) -> possibilities.length() == 1
