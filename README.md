@@ -42,7 +42,9 @@ To test install:
 
 The test framework is [Mocha](https://mochajs.org/) and Chai is used [for assertions](http://chaijs.com/api/bdd/). Then run:
 
-    mocha -w --compilers coffee:coffee-script/register
+    mocha -w
+
+The `-w` means watch for changes and re-test.
 
 Debugger
 --------
