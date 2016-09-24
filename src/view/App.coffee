@@ -22,7 +22,6 @@ module.exports = class App extends Component
       @gridView?.changeSquareDesign(squareDesign)
     @add(@designChanger)
     @solve = new Solve(@)
-    @add(@solve)
     @loadLevel()
 
   clicked: () =>
